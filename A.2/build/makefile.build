@@ -1,0 +1,9 @@
+all: server_all client_all
+
+server_all: $(SERVER_OBJ); $(CC) -o $(BUILD_DIR)/$(SERVER_NAME) $(SERVER_OBJ) $(CFLAGS);
+
+client_all: $(CLIENT_OBJ); $(CC) -o $(BUILD_DIR)/$(CLIENT_NAME) $(CLIENT_OBJ) $(CFLAGS);
+
+%.o: %.c $(INC_DIR)/*.h; $(CC) $(CFLAGS) $< -c -o $@;
+
+clean: ; @rm -rf $(SERVER_OBJ); @rm -rf $(CLIENT_OBJ);
